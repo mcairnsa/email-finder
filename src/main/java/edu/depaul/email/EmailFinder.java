@@ -3,7 +3,7 @@
  * Topic: demonstrate a variety of tests
  * Author: Dan Walker
  */
-package edu.depaul.email;
+package edu.depaul.email; 
 
 import edu.depaul.email.StorageService.StorageType;
 import static edu.depaul.email.StorageService.StorageType.EMAIL;
