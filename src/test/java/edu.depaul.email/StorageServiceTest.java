@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StorageServiceTest {
 
@@ -21,6 +21,7 @@ public class StorageServiceTest {
        lst.add("_-o_o-_@yahoo.com");
        x.addLocation(StorageService.StorageType.EMAIL ,"email.txt");
        x.storeList(StorageService.StorageType.EMAIL, lst);
+       assertTrue(true);
     }
 
     @Test
@@ -31,7 +32,7 @@ public class StorageServiceTest {
         lst.add(":(.email.com");
         lst.add("D:.notarealemail.com");
         x.addLocation(StorageService.StorageType.EMAIL ,"email-finder/falsePath");
-        x.storeList(StorageService.StorageType.EMAIL, lst);
+        assertThrows(edu.depaul.email.EmailFinderException.class, () -> new StorageService().storeList(StorageService.StorageType.EMAIL, lst));
     }
 
 }

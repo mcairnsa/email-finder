@@ -1,0 +1,7 @@
+testingemails@email.com
+
+Here we have an example of an email:
+
+    example.email@here.com
+
+EmailFinder should find those emails.
