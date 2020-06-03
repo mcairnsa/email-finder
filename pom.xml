@@ -14,7 +14,7 @@
     <platform.version>1.6.1</platform.version>
     <logback.version>1.2.3</logback.version>
     <surefire.version>3.0.0-M4</surefire.version>
-    <assembler.version>3.1.0</assembler.version>
+    <assembler.version>3.1.0</assembler.version> 
     <mockito.version>2.23.4</mockito.version>
   </properties>
 
