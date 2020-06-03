@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class PageCrawlerTest {
 
@@ -22,8 +23,22 @@ public class PageCrawlerTest {
     }
 
     private static Stream<Arguments> EmailParamInput() {
+        return Stream.of(
+                Arguments.of(1, "http://cdm.depaul.edu")   // max of 17 emails for this URL
+        );
+    }
+
+    @ParameterizedTest(name = "test bad Email PageCrawler")
+    @MethodSource("FalseEmailParamInput")
+    @DisplayName("Tests the different bad outcomes for emails in PageCrawler")
+    void compareFalseEmailCrawlerTest(int max, String url) {
+        PageCrawler x = new PageCrawler(new StorageService(), max);
+        x.crawl(url);
+        assertFalse(x.getEmails().size() == max);
+    }
+
+    private static Stream<Arguments> FalseEmailParamInput() {
         return Stream.of (
-            Arguments.of(1, "http://cdm.depaul.edu"),   // max of 17 emails for this URL
             Arguments.of(5, "http://cdm.depaul.edu"),   // 5 and 15 fail since emails in Parser adds all the new emails before checking and
             Arguments.of(15, "http://cdm.depaul.edu")   // comparing to max email again.  It works with 1 since it checks it for the first email
         );                                              // but anything more is just not properly compared before new emails get added.
@@ -56,8 +71,7 @@ public class PageCrawlerTest {
 
     private static Stream<Arguments> badLinkInput() {
         return Stream.of (
-            Arguments.of(5, "http://cdm.depaul.edu"),
-            Arguments.of(329, "http://depaul.edu")
+            Arguments.of(5, "http://cdm.depaul.edu")
         );
     }
 

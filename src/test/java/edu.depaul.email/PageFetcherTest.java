@@ -28,7 +28,7 @@ public class PageFetcherTest {
     void PageFetcherGetStringTest() {
         PageFetcher x = new PageFetcher();
         String y = x.getString("http://cdm.depaul.edu");
-        assertEquals(y.length(), 81643);
+        assertEquals(y.length(), 79289);
     }
 
 }
